@@ -1,27 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thermax NeO | Bio-CNG Purification Systems</title>
-    <meta name="description" content="Turn discarded feedstock into energy and revenue with Thermax NeO Bio-CNG purification systems.">
+    <meta name="description"
+        content="Turn discarded feedstock into energy and revenue with Thermax NeO Bio-CNG purification systems.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <!-- Header -->
     <header id="header">
         <div class="container header-container">
             <div class="logo">
-                <h2 class="text-red">THERMAX <span style="color: #333; font-weight: normal;">NeO</span></h2> 
+                <h2 class="text-red">THERMAX <span style="color: #333; font-weight: normal;">NeO</span></h2>
             </div>
-            <nav>
-                <ul>
+            <nav class="nav-menu">
+                <ul class="nav-links">
                     <li><a href="#features">Solutions</a></li>
                     <li><a href="#case-studies">Projects</a></li>
                     <li><a href="#hero" class="btn btn-primary">Contact Us</a></li>
                 </ul>
             </nav>
+            <button class="hamburger" aria-label="Toggle navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
         </div>
     </header>
 
@@ -29,34 +40,40 @@
     <section id="hero" class="hero-section">
         <!-- Decoration -->
         <div class="hero-diagonal-overlay"></div>
-        
+
         <div class="container hero-container-flex">
             <!-- Left Column: Text -->
             <div class="hero-text-col">
                 <h1 class="hero-title white-text">Bio-CNG performance starts with purification.</h1>
-                <p class="hero-subtitle white-text">Impurities can limit purity and plant efficiency.<br>Thermax NeO delivers <strong class="text-highlight">96–99% methane purity</strong>.</p>
+                <p class="hero-subtitle white-text">Impurities can limit purity and plant efficiency.<br>Thermax NeO
+                    delivers <strong class="text-highlight">96–99% methane purity</strong>.</p>
             </div>
 
             <!-- Right Column: Form -->
             <div class="hero-form-col">
                 <div class="form-card">
                     <h3>Talk to a Bio-CNG Expert</h3>
-                    <form id="hero-lead-form">
+                    <form id="lead-form">
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" id="name" name="name" placeholder="Name" required>
+                            <small class="error-message" id="name-error">Please enter your name.</small>
                         </div>
                         <div class="form-group">
                             <label for="company">Company</label>
                             <input type="text" id="company" name="company" placeholder="Company" required>
+                            <small class="error-message" id="company-error">Please enter your company name.</small>
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
                             <input type="email" id="email" name="email" placeholder="Email" required>
+                            <small class="error-message" id="email-error">Please enter a valid email address.</small>
                         </div>
                         <div class="form-group">
-                            <label for="phone">Phone</label>
-                            <input type="tel" id="phone" name="phone" placeholder="Phone" required>
+                            <label for="phone">Mobile Number</label>
+                            <input type="number" id="phone" name="mobile" placeholder="Mobile Number" required>
+                            <small class="error-message" id="phone-error">Please enter a valid phone number (e.g.,
+                                9876543210).</small>
                         </div>
                         <button type="submit" class="btn btn-primary full-width">Get in Touch</button>
                     </form>
@@ -180,6 +197,45 @@
         </div>
     </section>
 
+    <!-- Contact Form Section -->
+    <section id="contact" class="section-padding bg-white">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Get in Touch</h2>
+                <p>Ready to optimize your Bio-CNG performance? Let's talk.</p>
+            </div>
+            <div class="footer-form-container">
+                <form id="footer-lead-form" class="lead-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="f-name">Name</label>
+                            <input type="text" id="f-name" name="name" placeholder="Name" required>
+                            <small class="error-message" id="f-name-error">Please enter your name.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="f-company">Company</label>
+                            <input type="text" id="f-company" name="company" placeholder="Company" required>
+                            <small class="error-message" id="f-company-error">Please enter your company name.</small>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="f-email">Email</label>
+                            <input type="email" id="f-email" name="email" placeholder="Email" required>
+                            <small class="error-message" id="f-email-error">Please enter a valid email address.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="f-phone">Mobile Number</label>
+                            <input type="number" id="f-phone" name="mobile" placeholder="Mobile Number" required>
+                            <small class="error-message" id="f-phone-error">Please enter a valid phone number.</small>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary full-width">Talk to an Expert</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="bg-black text-white section-padding" style="padding: 40px 0;">
         <div class="container footer-content">
@@ -194,4 +250,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
