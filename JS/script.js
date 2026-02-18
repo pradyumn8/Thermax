@@ -513,11 +513,13 @@ document.addEventListener('DOMContentLoaded', () => {
         counters.forEach(counter => counterObserver.observe(counter));
     }
 
-    // ========== Case Study Download Popup ==========
-    const caseStudyBtns = document.querySelectorAll('.case-study-download-btn');
+    // ========== Brochure/Case Study Download Popup ==========
+    const downloadBtns = document.querySelectorAll('.case-study-download-btn');
     const caseStudyPopup = document.getElementById('case-study-popup');
     const caseStudyForm = document.getElementById('case-study-form');
     const caseStudyClose = document.querySelector('.case-study-close');
+    const brochureUrlInput = document.getElementById('brochure-url');
+    const productNameInput = document.getElementById('product-name');
 
     function openCaseStudyPopup() {
         if (caseStudyPopup) {
@@ -533,7 +535,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    caseStudyBtns.forEach(btn => btn.addEventListener('click', openCaseStudyPopup));
+    downloadBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const brochureUrl = btn.getAttribute('data-brochure');
+            const productName = btn.getAttribute('data-product');
+
+            if (brochureUrlInput) brochureUrlInput.value = brochureUrl || '';
+            if (productNameInput) productNameInput.value = productName || '';
+
+            // Update popup title if needed (optional)
+            const titleEl = caseStudyPopup.querySelector('.case-study-popup-title');
+            if (titleEl && productName) {
+                titleEl.textContent = `Download Brochure`;
+            }
+
+            openCaseStudyPopup();
+        });
+    });
+
     if (caseStudyClose) caseStudyClose.addEventListener('click', closeCaseStudyPopup);
 
     if (caseStudyPopup) {
@@ -557,7 +576,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const formData = new FormData(caseStudyForm);
             formData.append("access_key", "bb7fd0bd-1325-4bd0-a248-a475110975b9");
-            formData.append("subject", "Case Study Download Request");
+
+            // Use dynamic product name for subject
+            const productName = productNameInput ? productNameInput.value : 'Case Study';
+            formData.append("subject", `${productName} Download Request`);
 
             submitBtn.textContent = "Submitting...";
             submitBtn.disabled = true;
@@ -573,7 +595,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (response.ok) {
                     closeCaseStudyPopup();
                     caseStudyForm.reset();
-                    alert("Thank you! The case study will be sent to your email shortly.");
+
+                    // Trigger dynamic brochure PDF download
+                    const fileUrl = brochureUrlInput ? brochureUrlInput.value : '';
+                    if (fileUrl) {
+                        const downloadLink = document.createElement('a');
+                        downloadLink.href = fileUrl;
+                        downloadLink.download = fileUrl.split('/').pop();
+                        document.body.appendChild(downloadLink);
+                        downloadLink.click();
+                        document.body.removeChild(downloadLink);
+
+                        // Small delay to ensure download starts before alert
+                        setTimeout(() => {
+                            alert(`Thank you! The brochure is downloading.`);
+                        }, 500);
+                    } else {
+                        alert("Thank you! We will contact you shortly.");
+                    }
                 } else {
                     alert("Error: " + data.message);
                 }
