@@ -37,8 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
             alignment: 'split',
             content: `
                <div class="hero-content">
-                    <h1>Turn Discarded Feedstock into Energy and Revenue</h1>
-                    <p>Thermax NeO evaluates your feedstock and guides you to the right purification approach, helping convert waste into Bio-CNG with 96–99% methane purity.</p>
+                    <h1>Turning Waste into Predictable Bio-CNG Revenue</h1>
+                    <p>Thermax Neo designs high-performance BIO-CNG purification systems and guides you to the right purification approach, helping convert waste into Bio-CNG with 96-99% methane purity.</p>
                     <ul class="benefits-list">
                         <li>96–99% Methane Purity</li>
                         <li>Made for Indian Feedstock</li>
