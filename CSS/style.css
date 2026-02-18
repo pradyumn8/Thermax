@@ -1173,6 +1173,7 @@ footer {
 
 .fab-whatsapp {
     background-color: #25D366;
+    display: none;
     color: white;
 }
 
