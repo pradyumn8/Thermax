@@ -37,14 +37,14 @@ document.addEventListener('DOMContentLoaded', () => {
             alignment: 'split',
             content: `
                <div class="hero-content">
-                    <h1>Turning Waste into Predictable Bio-CNG Revenue</h1>
-                    <p>Thermax NeO designs high-performance Bio-CNG purification systems, helping convert waste into Bio-CNG with 96–99% methane purity.</p>
+                    <h1>Turn Discarded Feedstock into Energy and Revenue</h1>
+                    <p>Thermax NeO evaluates your feedstock and guides you to the right purification approach, helping convert waste into Bio-CNG with 96–99% methane purity.</p>
                     <ul class="benefits-list">
                         <li>96–99% Methane Purity</li>
                         <li>Made for Indian Feedstock</li>
                         <li>Technology Selection That Fits</li>
                     </ul>
-                    <a href="#contact" class="btn">Request a Technical Discussion</a>
+                    <a href="#features" class="btn">Explore Bio-CNG Potential</a>
                 </div>
                 <div class="hero-form-container">
                     <form id="hero-enquiry-form" class="hero-form">
@@ -511,5 +511,78 @@ document.addEventListener('DOMContentLoaded', () => {
         }, observerOptions);
 
         counters.forEach(counter => counterObserver.observe(counter));
+    }
+
+    // ========== Case Study Download Popup ==========
+    const caseStudyBtns = document.querySelectorAll('.case-study-download-btn');
+    const caseStudyPopup = document.getElementById('case-study-popup');
+    const caseStudyForm = document.getElementById('case-study-form');
+    const caseStudyClose = document.querySelector('.case-study-close');
+
+    function openCaseStudyPopup() {
+        if (caseStudyPopup) {
+            caseStudyPopup.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    function closeCaseStudyPopup() {
+        if (caseStudyPopup) {
+            caseStudyPopup.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+
+    caseStudyBtns.forEach(btn => btn.addEventListener('click', openCaseStudyPopup));
+    if (caseStudyClose) caseStudyClose.addEventListener('click', closeCaseStudyPopup);
+
+    if (caseStudyPopup) {
+        caseStudyPopup.addEventListener('click', (e) => {
+            if (e.target === caseStudyPopup) closeCaseStudyPopup();
+        });
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && caseStudyPopup && caseStudyPopup.classList.contains('active')) {
+            closeCaseStudyPopup();
+        }
+    });
+
+    if (caseStudyForm) {
+        caseStudyForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const submitBtn = caseStudyForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+
+            const formData = new FormData(caseStudyForm);
+            formData.append("access_key", "bb7fd0bd-1325-4bd0-a248-a475110975b9");
+            formData.append("subject", "Case Study Download Request");
+
+            submitBtn.textContent = "Submitting...";
+            submitBtn.disabled = true;
+
+            try {
+                const response = await fetch("https://api.web3forms.com/submit", {
+                    method: "POST",
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    closeCaseStudyPopup();
+                    caseStudyForm.reset();
+                    alert("Thank you! The case study will be sent to your email shortly.");
+                } else {
+                    alert("Error: " + data.message);
+                }
+            } catch (error) {
+                alert("Something went wrong. Please try again.");
+            } finally {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+        });
     }
 });
