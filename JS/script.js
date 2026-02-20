@@ -38,11 +38,11 @@ document.addEventListener('DOMContentLoaded', () => {
             content: `
                <div class="hero-content">
                     <h1>Turning Waste into Predictable Bio-CNG Revenue</h1>
-                    <p>Thermax Neo designs high-performance BIO-CNG purification systems and guides you to the right purification approach, helping convert waste into Bio-CNG with 96-99% methane purity.</p>
+                    <p>Thermax Neo designs high-performance Bio-CNG purification systems, guiding the right technology selection, engineered for Indian operating conditions and IS 16087.compliance.</p>
                     <ul class="benefits-list">
-                        <li>96–99% Methane Purity</li>
-                        <li>Made for Indian Feedstock</li>
-                        <li>Technology Selection That Fits</li>
+                        <li>Bio-CNG Purification Systems (2-32 TPD)</li>
+                        <li>96-99% Methane Purity</li>
+                        <li>VPSA, PSA, Membrane & Amine Scrubbing Technologies</li>
                     </ul>
                     <a href="#features" class="btn">Explore Bio-CNG Potential</a>
                 </div>
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <input type="text" id="hero-company" name="company" required>
                         </div>
                         <div class="form-group">
-                            <label for="hero-email">Email</label>
+                            <label for="hero-email">Company Email</label>
                             <input type="email" id="hero-email" name="email" required>
                         </div>
                         <div class="form-group">
@@ -211,13 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentSlide = 0;
     let currentImages = [];
 
-    document.querySelectorAll('.use-case-card[data-gallery]').forEach(card => {
-        card.addEventListener('click', () => {
-            const galleryKey = card.dataset.gallery;
-            const gallery = galleryData[galleryKey];
-            if (gallery) openGallery(gallery.title, gallery.images);
-        });
-    });
+    // Gallery card click removed — no longer needed
 
     function openGallery(title, images) {
         currentImages = images;
@@ -624,4 +618,38 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // ========== Mobile Number 10-Digit Validation ==========
+    function setupMobileValidation(mobileId, submitBtn) {
+        const mobileInput = document.getElementById(mobileId);
+        if (!mobileInput || !submitBtn) return;
+
+        mobileInput.addEventListener('input', function () {
+            const digits = this.value.replace(/\D/g, '');
+            if (digits.length === 0 || digits.length === 10) {
+                submitBtn.disabled = false;
+                submitBtn.style.opacity = '1';
+            } else {
+                submitBtn.disabled = true;
+                submitBtn.style.opacity = '0.5';
+            }
+        });
+    }
+
+    // Hero form
+    const heroSubmitBtn = document.querySelector('#hero-enquiry-form button[type="submit"]');
+    setupMobileValidation('hero-mobile', heroSubmitBtn);
+
+    // Contact form
+    const contactSubmitBtn = document.querySelector('#enquiry-form button[type="submit"]');
+    setupMobileValidation('mobile', contactSubmitBtn);
+
+    // FAB enquiry form
+    const fabSubmitBtn = document.querySelector('#fab-enquiry-form button[type="submit"]');
+    setupMobileValidation('fab-mobile', fabSubmitBtn);
+
+    // Case study form
+    const csSubmitBtn = document.querySelector('#case-study-form button[type="submit"]');
+    setupMobileValidation('cs-mobile', csSubmitBtn);
+
 });
