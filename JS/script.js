@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
             content: `
                <div class="hero-content">
                     <h1>Turning Waste into Predictable Bio-CNG Revenue</h1>
-                    <p>Thermax Neo designs high-performance Bio-CNG purification systems, guiding the right technology selection, engineered for Indian operating conditions and IS 16087.compliance.</p>
+                    <p>Thermax Neo designs high-performance Bio-CNG purification systems, guiding the right technology selection, engineered for Indian operating conditions and IS 16087 compliance.</p>
                     <ul class="benefits-list">
                         <li>Bio-CNG Purification Systems (2-32 TPD)</li>
                         <li>96-99% Methane Purity</li>
