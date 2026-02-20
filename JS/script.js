@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ========== Hero Slider ==========
+                    // display none for button
     const heroBanners = [
         {
             image: 'assets/img889.jpg',
@@ -44,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <li>96-99% Methane Purity</li>
                         <li>VPSA, PSA, Membrane & Amine Scrubbing Technologies</li>
                     </ul>
-                    <a href="#features" class="btn">Explore Bio-CNG Potential</a>
+                    <a href="#features" class="btn" style="display: none;">Explore Bio-CNG Potential</a>
                 </div>
                 <div class="hero-form-container">
                     <form id="hero-enquiry-form" class="hero-form">
