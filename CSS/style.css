@@ -844,6 +844,8 @@ input[type="number"] {
     margin-bottom: var(--spacing-lg);
     font-size: 2rem;
     color: var(--text-color);
+    text-align: center;
+    line-height: 1.2;
 }
 
 .why-neo-list {
@@ -1562,7 +1564,7 @@ footer {
     }
 
     .highlight-text {
-        font-size: 0.95rem;
+        font-size: 1.4rem;
     }
 
     /* Social proof marquee */
