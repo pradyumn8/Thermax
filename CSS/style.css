@@ -97,6 +97,14 @@ img {
     font-size: 1.2rem;
 }
 
+.section-title {
+    font-size: 1.8rem;
+    text-align: center;
+    color: #666;
+    max-width: 700px;
+    margin: -8px auto 32px;
+}
+
 .section-subtitle-light {
     text-align: center;
     /* color: rgba(255, 255, 255, 0.8); */
@@ -378,21 +386,63 @@ input[type="number"] {
     color: var(--light-gray);
 }
 
-.benefits-list {
+/* Hero Highlight Cards */
+.hero-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
     margin-bottom: var(--spacing-lg);
 }
 
-.benefits-list li {
-    margin-bottom: var(--spacing-sm);
-    display: flex;
+.hero-highlight-card {
+    display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 16px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 16px 22px;
+    transition: transform 0.3s ease, background 0.3s ease;
+    width: fit-content;
 }
 
-.benefits-list li::before {
-    content: "✓";
-    color: var(--primary-color);
-    font-weight: bold;
+.hero-highlight-card:hover {
+    transform: translateX(6px);
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.highlight-icon {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.highlight-icon svg {
+    width: 20px;
+    height: 20px;
+    color: var(--white);
+}
+
+.highlight-text {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.4;
+    letter-spacing: 0.2px;
+}
+
+.hero-counter {
+    display: inline-block;
+    min-width: 2ch;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
 }
 
 /* ========== Social Proof ========== */
@@ -1490,6 +1540,31 @@ footer {
         display: none;
     }
 
+    /* Hero Highlights Mobile */
+    .hero-highlights {
+        gap: 10px;
+    }
+
+    .hero-highlight-card {
+        padding: 12px 16px;
+        gap: 12px;
+        border-radius: 10px;
+    }
+
+    .highlight-icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .highlight-icon svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .highlight-text {
+        font-size: 0.95rem;
+    }
+
     /* Social proof marquee */
     .logo-track {
         display: flex;
@@ -1519,8 +1594,14 @@ footer {
     }
 
     .services-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: var(--spacing-md);
+    }
+
+    .service-tile:last-child {
+        grid-column: 1 / -1;
+        max-width: calc(50% - var(--spacing-md) / 2);
+        justify-self: center;
     }
 
     .service-icon {
@@ -1529,8 +1610,8 @@ footer {
     }
 
     .service-icon img {
-        width: 28px;
-        height: 28px;
+        width: 56px;
+        height: 56px;
     }
 
     .service-tile h4 {
@@ -1634,4 +1715,11 @@ footer {
         width: 95%;
         padding: 20px 24px;
     }
+
+    .section-title,
+    h2,
+    h3 {
+        letter-spacing: 1px;
+    }
+
 }

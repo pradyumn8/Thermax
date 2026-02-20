@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ========== Hero Slider ==========
-                    // display none for button
+    // display none for button
     const heroBanners = [
         {
             image: 'assets/img889.jpg',
@@ -40,11 +40,21 @@ document.addEventListener('DOMContentLoaded', () => {
                <div class="hero-content">
                     <h1>Turning Waste into Predictable Bio-CNG Revenue</h1>
                     <p>Thermax Neo designs high-performance Bio-CNG purification systems, guiding the right technology selection, engineered for Indian operating conditions and IS 16087 compliance.</p>
-                    <ul class="benefits-list">
-                        <li>Bio-CNG Purification Systems (2-32 TPD)</li>
-                        <li>96-99% Methane Purity</li>
-                        <li>VPSA, PSA, Membrane & Amine Scrubbing Technologies</li>
-                    </ul>
+                    <div class="hero-highlights">
+                         <div class="hero-highlight-card">
+                            <span class="highlight-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></span>
+                            <span class="highlight-text">VPSA, PSA, Membrane & Amine Scrubbing Technologies</span>
+                        </div>
+                        <div class="hero-highlight-card">
+                            <span class="highlight-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></span>
+                            <span class="highlight-text">Bio-CNG Purification Systems (2–32 TPD)</span>
+                        </div>
+                        <div class="hero-highlight-card">
+                            <span class="highlight-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></span>
+                            <span class="highlight-text"><span class="hero-counter" data-target="96">0</span>–<span class="hero-counter" data-target="99">0</span>% Methane Purity</span>
+                        </div>
+                   
+                    </div>
                     <a href="#features" class="btn" style="display: none;">Explore Bio-CNG Potential</a>
                 </div>
                 <div class="hero-form-container">
@@ -71,21 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `
         },
-        {
-            image: 'assets/editt.png',
-            alignment: 'left',
-            content: ``
-        },
-        {
-            image: 'assets/2.png',
-            alignment: 'left',
-            content: ``
-        },
-        {
-            image: 'assets/image001.jpg',
-            alignment: 'left',
-            content: ``
-        }
     ];
 
     const heroSliderContainer = document.getElementById('hero-slider');
@@ -506,6 +501,40 @@ document.addEventListener('DOMContentLoaded', () => {
         }, observerOptions);
 
         counters.forEach(counter => counterObserver.observe(counter));
+    }
+
+    // ========== Hero Counter Animation (96-99%) ==========
+    const heroCounters = document.querySelectorAll('.hero-counter');
+
+    if (heroCounters.length > 0) {
+        const heroObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const target = parseInt(el.getAttribute('data-target'));
+                    if (isNaN(target)) return;
+
+                    const duration = 1500;
+                    const increment = target / (duration / 16);
+                    let current = 0;
+
+                    const animate = () => {
+                        current += increment;
+                        if (current < target) {
+                            el.textContent = Math.ceil(current);
+                            requestAnimationFrame(animate);
+                        } else {
+                            el.textContent = target;
+                        }
+                    };
+
+                    requestAnimationFrame(animate);
+                    observer.unobserve(el);
+                }
+            });
+        }, { root: null, threshold: 0.5 });
+
+        heroCounters.forEach(el => heroObserver.observe(el));
     }
 
     // ========== Brochure/Case Study Download Popup ==========
