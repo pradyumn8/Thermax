@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <label for="hero-mobile">Mobile Number</label>
                             <input type="number" id="hero-mobile" name="mobile" required>
                         </div>
-                        <button type="submit" class="btn warning-btn" style="width: 100%;">Get in Touch</button>
+                        <button type="submit" class="btn warning-btn" style="width: 100%;">Submit</button>
                     </form>
                 </div>
             `
