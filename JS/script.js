@@ -41,18 +41,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     <h1>Turning Waste into Predictable Bio-CNG Revenue</h1>
                     <p>Thermax Ne0 designs high-performance Bio-CNG purification systems, guiding the right technology selection, engineered for Indian operating conditions and IS 16087 compliance.</p>
                     <div class="hero-highlights">
-                         <div class="hero-highlight-card">
+                        <div class="hero-highlight-card">
                             <span class="highlight-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></span>
-                            <span class="highlight-text" style="font-size: 1.4rem;">VPSA, PSA, Membrane & Amine Scrubbing Technologies</span>
+                            <span class="highlight-text" style="font-size: 1.4rem;"><span class="hero-counter" data-target="96">0</span>–<span class="hero-counter" data-target="99">0</span>% Methane Purity</span>
+                        </div>
+                        <div class="hero-highlight-card">
+                            <span class="highlight-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></span>
+                            <span class="highlight-text" style="font-size: 1.4rem;">VPSA, PSA, Membrane and Amine Scrubbing Technologies</span>
                         </div>
                         <div class="hero-highlight-card">
                             <span class="highlight-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></span>
                             <span class="highlight-text" style="font-size: 1.4rem;">Bio-CNG Purification Systems (2–32 TPD)</span>
                         </div>
-                        <div class="hero-highlight-card">
-                            <span class="highlight-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></span>
-                            <span class="highlight-text" style="font-size: 1.4rem;"><span class="hero-counter" data-target="96">0</span>–<span class="hero-counter" data-target="99">0</span>% Methane Purity</span>
-                        </div>
+                    
                    
                     </div>
                     <a href="#features" class="btn" style="display: none;">Explore Bio-CNG Potential</a>
@@ -121,6 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (heroForm) {
             heroForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
+                if (!validateMobile('hero-mobile')) return;
                 const submitBtn = heroForm.querySelector('button[type="submit"]');
                 const originalText = submitBtn.textContent;
 
@@ -320,12 +322,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 setError(emailInput, 'email-error', false);
             }
 
-            const phoneRegex = /^[\d\+\-\(\)\s]{7,}$/;
-            if (!phoneRegex.test(mobileInput.value.trim())) {
-                setError(mobileInput, 'mobile-error', true);
+            const mobileDigits = mobileInput.value.replace(/\D/g, '');
+            if (mobileDigits.length !== 10) {
+                alert('Please enter a valid 10-digit mobile number.');
+                mobileInput.focus();
                 isValid = false;
-            } else {
-                setError(mobileInput, 'mobile-error', false);
             }
 
             if (isValid) {
@@ -415,6 +416,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (fabEnquiryForm) {
         fabEnquiryForm.addEventListener('submit', async (e) => {
             e.preventDefault();
+            if (!validateMobile('fab-mobile')) return;
 
             const submitBtn = fabEnquiryForm.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
@@ -570,7 +572,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Update popup title if needed (optional)
             const titleEl = caseStudyPopup.querySelector('.case-study-popup-title');
             if (titleEl && productName) {
-                titleEl.textContent = `Download Brochure`;
+                titleEl.textContent = `Download Case Study`;
             }
 
             openCaseStudyPopup();
@@ -594,6 +596,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (caseStudyForm) {
         caseStudyForm.addEventListener('submit', async (e) => {
             e.preventDefault();
+            if (!validateMobile('cs-mobile')) return;
 
             const submitBtn = caseStudyForm.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
@@ -650,36 +653,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ========== Mobile Number 10-Digit Validation ==========
-    function setupMobileValidation(mobileId, submitBtn) {
+    function validateMobile(mobileId) {
         const mobileInput = document.getElementById(mobileId);
-        if (!mobileInput || !submitBtn) return;
-
-        mobileInput.addEventListener('input', function () {
-            const digits = this.value.replace(/\D/g, '');
-            if (digits.length === 0 || digits.length === 10) {
-                submitBtn.disabled = false;
-                submitBtn.style.opacity = '1';
-            } else {
-                submitBtn.disabled = true;
-                submitBtn.style.opacity = '0.5';
-            }
-        });
+        if (!mobileInput) return true;
+        const digits = mobileInput.value.replace(/\D/g, '');
+        if (digits.length !== 10) {
+            alert('Please enter a valid 10-digit mobile number.');
+            mobileInput.focus();
+            return false;
+        }
+        return true;
     }
-
-    // Hero form
-    const heroSubmitBtn = document.querySelector('#hero-enquiry-form button[type="submit"]');
-    setupMobileValidation('hero-mobile', heroSubmitBtn);
-
-    // Contact form
-    const contactSubmitBtn = document.querySelector('#enquiry-form button[type="submit"]');
-    setupMobileValidation('mobile', contactSubmitBtn);
-
-    // FAB enquiry form
-    const fabSubmitBtn = document.querySelector('#fab-enquiry-form button[type="submit"]');
-    setupMobileValidation('fab-mobile', fabSubmitBtn);
-
-    // Case study form
-    const csSubmitBtn = document.querySelector('#case-study-form button[type="submit"]');
-    setupMobileValidation('cs-mobile', csSubmitBtn);
 
 });
