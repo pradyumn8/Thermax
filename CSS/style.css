@@ -273,7 +273,8 @@ header .container {
     z-index: 2;
     display: flex;
     align-items: center;
-    padding: 0 10%;
+    padding: 0 4%;
+    gap: 60px;
 }
 
 .hero-slide-content.align-right {
@@ -406,20 +407,20 @@ input[type="number"] {
     display: inline-flex;
     align-items: center;
     gap: 16px;
-    background: rgba(255, 255, 255, 0.1);
+    /* background: rgba(255, 255, 255, 0.1); */
     /* backdrop-filter: blur(8px); */
     /* -webkit-backdrop-filter: blur(8px); */
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 12px;
-    padding: 16px 22px;
-    transition: transform 0.3s ease, background 0.3s ease;
+    /* border: 1px solid rgba(255, 255, 255, 0.15); */
+    /* border-radius: 12px; */
+    /* padding: 16px 22px; */
+    /* transition: transform 0.3s ease, background 0.3s ease; */
     width: fit-content;
 }
 
-.hero-highlight-card:hover {
+/* .hero-highlight-card:hover {
     transform: translateX(6px);
     background: rgba(255, 255, 255, 0.18);
-}
+} */
 
 .highlight-icon {
     flex-shrink: 0;
@@ -1513,11 +1514,12 @@ footer {
     /* Hero Mobile */
     .hero-slide-content {
         justify-content: center;
-        padding: 80px 20px 60px;
+        padding: 40px 20px;
         background: rgba(0, 0, 0, 0.6);
         flex-direction: column;
         text-align: center;
         align-items: center;
+        gap: 32px;
     }
 
     .hero-slide-content.align-split {
@@ -1547,7 +1549,9 @@ footer {
     }
 
     .hero-form-container {
-        display: none;
+        display: block;
+        width: 100%;
+        max-width: 400px;
     }
 
     /* Hero Highlights Mobile */
