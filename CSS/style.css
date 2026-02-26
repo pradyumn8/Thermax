@@ -326,7 +326,7 @@ header .container {
     color: var(--text-color);
     font-weight: 500;
     letter-spacing: 0.3px;
-    text-transform: uppercase;
+    text-transform: capitalize;
 }
 
 .hero-form input {
