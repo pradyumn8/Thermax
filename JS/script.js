@@ -76,6 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="form-group">
                             <label for="hero-mobile">Mobile Number</label>
                             <input type="number" id="hero-mobile" name="mobile" required>
+                            <small class="error-message" id="hero-mobile-error">Required 10 digit number.</small>
                         </div>
                         <button type="submit" class="btn warning-btn" style="width: 100%;">Submit</button>
                     </form>
@@ -324,9 +325,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const mobileDigits = mobileInput.value.replace(/\D/g, '');
             if (mobileDigits.length !== 10) {
-                alert('Please enter a valid 10-digit mobile number.');
-                mobileInput.focus();
+                setError(mobileInput, 'mobile-error', true);
                 isValid = false;
+            } else {
+                setError(mobileInput, 'mobile-error', false);
             }
 
             if (isValid) {
@@ -652,17 +654,34 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ========== Mobile Number 10-Digit Validation ==========
     function validateMobile(mobileId) {
         const mobileInput = document.getElementById(mobileId);
         if (!mobileInput) return true;
+        const errorEl = document.getElementById(mobileId + '-error');
         const digits = mobileInput.value.replace(/\D/g, '');
         if (digits.length !== 10) {
-            alert('Please enter a valid 10-digit mobile number.');
+            mobileInput.classList.add('error');
+            if (errorEl) errorEl.classList.add('visible');
             mobileInput.focus();
             return false;
         }
+        mobileInput.classList.remove('error');
+        if (errorEl) errorEl.classList.remove('visible');
         return true;
     }
+
+    // Real-time error clearing for all mobile fields
+    ['hero-mobile', 'fab-mobile', 'cs-mobile'].forEach(id => {
+        const input = document.getElementById(id);
+        if (input) {
+            input.addEventListener('input', function () {
+                if (this.classList.contains('error')) {
+                    this.classList.remove('error');
+                    const errorEl = document.getElementById(id + '-error');
+                    if (errorEl) errorEl.classList.remove('visible');
+                }
+            });
+        }
+    });
 
 });
