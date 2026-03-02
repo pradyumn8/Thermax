@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
             alignment: 'split',
             content: `
                <div class="hero-content">
-                    <h1>Turning Waste into Predictable Bio-CNG Revenue</h1>
+                    <h1>Turning Waste into Predictable Biogas Revenue</h1>
                     <p>Thermax Ne0 designs high-performance Bio-CNG purification systems, guiding the right technology selection, engineered for Indian operating conditions and IS 16087 compliance.</p>
                     <div class="hero-highlights">
                         <div class="hero-highlight-card">
