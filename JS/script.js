@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Thermax Ne0 Landing Page Loaded');
 
-    // ========== Mobile Navigation Toggle ==========
+    // Mobile Navigation Toggle
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
 
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ========== Smooth Scrolling ==========
+    // Smooth Scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ========== Hero Slider ==========
+    // Hero Slider
     // display none for button
     const heroBanners = [
         {
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <h1>Your Biogas Purification Partner</h1>
                     <div class="hero-para-wrapper">
                         <p>At Thermax, we leverage our strong engineering capabilities and energy expertise to help industries and communities unlock the full
-potential of biogas. From compact rural units to large-scale industrial plants, we offer end-to-end biogas purification solutions
+potential of biogas. From compact rural units to large scale industrial plants, we offer end to end biogas purification solutions
 tailored to diverse applications. Our team works closely with customers to recommend the right technology based on feedstock
 characteristics, plant capacity, and local operating conditions, ensuring efficient and reliable performance. As industries transition
 toward cleaner energy sources, we aim to be a trusted partner in biogas purification, delivering efficient and sustainable solutions
@@ -179,7 +179,7 @@ that support a cleaner future.</p>
 
     }
 
-    // ========== Gallery Popup ==========
+    // Gallery Popup
     const galleryData = {
         'project-1': {
             title: 'From Biogas to Commercial-Grade Methane',
@@ -283,7 +283,7 @@ that support a cleaner future.</p>
         if (e.key === 'ArrowRight') goToSlide(currentSlide + 1);
     });
 
-    // ========== Bottom Contact Form ==========
+    // Bottom Contact Form
     const leadForm = document.getElementById('enquiry-form');
     if (leadForm) {
         leadForm.setAttribute('novalidate', true);
@@ -388,7 +388,7 @@ that support a cleaner future.</p>
         });
     }
 
-    // ========== FAB Enquiry Popup ==========
+    // FAB Enquiry Popup
     const fabEnquiryBtn = document.getElementById('fab-enquiry-btn');
     const fabEnquiryPopup = document.getElementById('fab-enquiry-popup');
     const fabEnquiryForm = document.getElementById('fab-enquiry-form');
@@ -461,7 +461,7 @@ that support a cleaner future.</p>
         });
     }
 
-    // ========== Floating Buttons Visibility ==========
+    // Floating Buttons Visibility
     const floatingButtons = document.querySelector('.floating-buttons');
     const heroSection = document.querySelector('.hero');
 
@@ -479,7 +479,7 @@ that support a cleaner future.</p>
         toggleFloatingButtons();
     }
 
-    // ========== Number Counter Animation ==========
+    // Number Counter Animation
     const counters = document.querySelectorAll('.counter');
 
     if (counters.length > 0) {
@@ -515,7 +515,7 @@ that support a cleaner future.</p>
         counters.forEach(counter => counterObserver.observe(counter));
     }
 
-    // ========== Hero Counter Animation (96-99%) ==========
+    // Hero Counter Animation (96 99%)
     const heroCounters = document.querySelectorAll('.hero-counter');
 
     if (heroCounters.length > 0) {
@@ -549,7 +549,7 @@ that support a cleaner future.</p>
         heroCounters.forEach(el => heroObserver.observe(el));
     }
 
-    // ========== Brochure/Case Study Download Popup ==========
+    // Brochure/Case Study Download Popup
     const downloadBtns = document.querySelectorAll('.case-study-download-btn');
     const caseStudyPopup = document.getElementById('case-study-popup');
     const caseStudyForm = document.getElementById('case-study-form');
@@ -662,8 +662,8 @@ that support a cleaner future.</p>
         });
     }
 
-    // ========== Mobile Number 10-Digit Validation ==========
-    // ========== Read More Toggle ==========
+    // Mobile Number 10 Digit Validation
+    // Read More Toggle
     document.addEventListener('click', (e) => {
         if (e.target.classList.contains('read-more-btn')) {
             const wrapper = e.target.closest('.hero-para-wrapper');

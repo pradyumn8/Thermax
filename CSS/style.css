@@ -35,7 +35,7 @@ h4,
 h5,
 h6 {
     font-weight: 300;
-    line-height: 1.0;
+    line-height: 1.2;
     letter-spacing: -0.5px;
     margin-bottom: var(--spacing-md);
 }
@@ -328,12 +328,13 @@ header .container {
     margin-bottom: 10px;
 }
 
+/* banner form label */
 .hero-form label {
     display: block;
     font-size: 0.85rem;
     margin-bottom: 6px;
     color: var(--text-color);
-    font-weight: 500;
+    font-weight: normal !important;
     letter-spacing: 0.3px;
     text-transform: capitalize;
 }
@@ -1059,7 +1060,7 @@ input[type="number"] {
 .case-study-form .form-group label {
     display: block;
     margin-bottom: 4px;
-    font-weight: 600;
+    font-weight: 400;
     font-size: 0.9rem;
 }
 
@@ -1080,16 +1081,40 @@ input[type="number"] {
 
 /* ========== Lead Form ========== */
 .lead-form-section {
-    background-color: var(--light-gray);
+    background-color: #f4f5f7;
+    padding: 80px 0;
 }
 
 .lead-form {
     background: var(--white);
-    padding: var(--spacing-xl);
-    border-radius: 8px;
-    max-width: 600px;
+    padding: 40px var(--spacing-xl);
+    border-radius: 12px;
+    max-width: 800px;
     margin: 0 auto;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border-top: 5px solid var(--primary-color);
+}
+
+@media (min-width: 769px) {
+    .lead-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+    
+    .lead-form .btn {
+        grid-column: span 2;
+        justify-self: center;
+        min-width: 200px;
+    }
+}
+
+/* Ensure button is centered on mobile too if not full width */
+.lead-form .btn {
+    display: block;
+    margin: var(--spacing-md) auto 0;
+    width: fit-content;
+    min-width: 200px;
 }
 
 .form-group {
@@ -1099,7 +1124,7 @@ input[type="number"] {
 .form-group label {
     display: block;
     margin-bottom: var(--spacing-sm);
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .form-group input {
@@ -1618,6 +1643,7 @@ footer {
         display: block;
         width: 100%;
         max-width: 400px;
+        text-align: left;
     }
 
     /* Hero Highlights Mobile */
