@@ -38,7 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
             alignment: 'split',
             content: `
                <div class="hero-content">
-<<<<<<< HEAD
                     <h1>Your Biogas Purification Partner</h1>
                     <div class="hero-para-wrapper">
                         <p>At Thermax, we leverage our strong engineering capabilities and energy expertise to help industries and communities unlock the full
@@ -49,10 +48,6 @@ toward cleaner energy sources, we aim to be a trusted partner in biogas purifica
 that support a cleaner future.</p>
                         <button class="read-more-btn">Read More</button>
                     </div>
-=======
-                    <h1>Turning Waste into Predictable Biogas Revenue</h1>
-                    <p>Thermax Ne0 designs high-performance Bio-CNG purification systems, guiding the right technology selection, engineered for Indian operating conditions and IS 16087 compliance.</p>
->>>>>>> 49d3a1b8f4a841a050925a539d51eb2a649a2da2
                     <div class="hero-highlights">
                         <div class="hero-highlight-card">
                             <span class="highlight-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></span>
@@ -667,7 +662,6 @@ that support a cleaner future.</p>
         });
     }
 
-<<<<<<< HEAD
     // ========== Mobile Number 10-Digit Validation ==========
     // ========== Read More Toggle ==========
     document.addEventListener('click', (e) => {
@@ -681,8 +675,6 @@ that support a cleaner future.</p>
         }
     });
 
-=======
->>>>>>> 49d3a1b8f4a841a050925a539d51eb2a649a2da2
     function validateMobile(mobileId) {
         const mobileInput = document.getElementById(mobileId);
         if (!mobileInput) return true;

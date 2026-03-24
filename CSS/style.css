@@ -273,7 +273,7 @@ header .container {
     z-index: 2;
     display: flex;
     align-items: center;
-    padding: 0 10%;
+    padding: 60px 10% 20px;
 }
 
 .hero-slide-content.align-right {
@@ -1596,19 +1596,19 @@ footer {
         display: block;
     }
 
-    /* Truncated state: button at end of 3rd line */
+    /* Truncated state: button below the 3-line text */
     .hero-para-wrapper:not(.expanded) .read-more-btn {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        margin-bottom: 0;
-        /* background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.7) 20%, rgba(0, 0, 0, 0.9) 60%); */
-        padding-left: 30px;
+        position: static;
+        display: block;
+        margin-top: 5px;
+        margin-bottom: 10px;
     }
 
     /* Expanded state: button flows naturally below text */
     .hero-para-wrapper.expanded .read-more-btn {
         position: static;
+        display: block;
+        margin-top: 5px;
         margin-bottom: 10px;
         background: none;
         padding-left: 0;
