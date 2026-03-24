@@ -38,8 +38,16 @@ document.addEventListener('DOMContentLoaded', () => {
             alignment: 'split',
             content: `
                <div class="hero-content">
-                    <h1>Turning Waste into Predictable Bio-CNG Revenue</h1>
-                    <p>Thermax Ne0 designs high-performance Bio-CNG purification systems, guiding the right technology selection, engineered for Indian operating conditions and IS 16087 compliance.</p>
+                    <h1>Your Biogas Purification Partner</h1>
+                    <div class="hero-para-wrapper">
+                        <p>At Thermax, we leverage our strong engineering capabilities and energy expertise to help industries and communities unlock the full
+potential of biogas. From compact rural units to large-scale industrial plants, we offer end-to-end biogas purification solutions
+tailored to diverse applications. Our team works closely with customers to recommend the right technology based on feedstock
+characteristics, plant capacity, and local operating conditions, ensuring efficient and reliable performance. As industries transition
+toward cleaner energy sources, we aim to be a trusted partner in biogas purification, delivering efficient and sustainable solutions
+that support a cleaner future.</p>
+                        <button class="read-more-btn">Read More</button>
+                    </div>
                     <div class="hero-highlights">
                         <div class="hero-highlight-card">
                             <span class="highlight-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></span>
@@ -653,6 +661,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ========== Mobile Number 10-Digit Validation ==========
+    // ========== Read More Toggle ==========
+    document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('read-more-btn')) {
+            const wrapper = e.target.closest('.hero-para-wrapper');
+            if (wrapper) {
+                wrapper.classList.toggle('expanded');
+                const isExpanded = wrapper.classList.contains('expanded');
+                e.target.textContent = isExpanded ? 'Read Less' : 'Read More';
+            }
+        }
+    });
+
     function validateMobile(mobileId) {
         const mobileInput = document.getElementById(mobileId);
         if (!mobileInput) return true;
