@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
             alignment: 'split',
             content: `
                <div class="hero-content">
+<<<<<<< HEAD
                     <h1>Your Biogas Purification Partner</h1>
                     <div class="hero-para-wrapper">
                         <p>At Thermax, we leverage our strong engineering capabilities and energy expertise to help industries and communities unlock the full
@@ -48,6 +49,10 @@ toward cleaner energy sources, we aim to be a trusted partner in biogas purifica
 that support a cleaner future.</p>
                         <button class="read-more-btn">Read More</button>
                     </div>
+=======
+                    <h1>Turning Waste into Predictable Biogas Revenue</h1>
+                    <p>Thermax Ne0 designs high-performance Bio-CNG purification systems, guiding the right technology selection, engineered for Indian operating conditions and IS 16087 compliance.</p>
+>>>>>>> 49d3a1b8f4a841a050925a539d51eb2a649a2da2
                     <div class="hero-highlights">
                         <div class="hero-highlight-card">
                             <span class="highlight-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></span>
@@ -84,6 +89,7 @@ that support a cleaner future.</p>
                         <div class="form-group">
                             <label for="hero-mobile">Mobile Number</label>
                             <input type="number" id="hero-mobile" name="mobile" required>
+                            <small class="error-message" id="hero-mobile-error">Required 10 digit number.</small>
                         </div>
                         <button type="submit" class="btn warning-btn" style="width: 100%;">Submit</button>
                     </form>
@@ -332,9 +338,10 @@ that support a cleaner future.</p>
 
             const mobileDigits = mobileInput.value.replace(/\D/g, '');
             if (mobileDigits.length !== 10) {
-                alert('Please enter a valid 10-digit mobile number.');
-                mobileInput.focus();
+                setError(mobileInput, 'mobile-error', true);
                 isValid = false;
+            } else {
+                setError(mobileInput, 'mobile-error', false);
             }
 
             if (isValid) {
@@ -660,6 +667,7 @@ that support a cleaner future.</p>
         });
     }
 
+<<<<<<< HEAD
     // ========== Mobile Number 10-Digit Validation ==========
     // ========== Read More Toggle ==========
     document.addEventListener('click', (e) => {
@@ -673,16 +681,36 @@ that support a cleaner future.</p>
         }
     });
 
+=======
+>>>>>>> 49d3a1b8f4a841a050925a539d51eb2a649a2da2
     function validateMobile(mobileId) {
         const mobileInput = document.getElementById(mobileId);
         if (!mobileInput) return true;
+        const errorEl = document.getElementById(mobileId + '-error');
         const digits = mobileInput.value.replace(/\D/g, '');
         if (digits.length !== 10) {
-            alert('Please enter a valid 10-digit mobile number.');
+            mobileInput.classList.add('error');
+            if (errorEl) errorEl.classList.add('visible');
             mobileInput.focus();
             return false;
         }
+        mobileInput.classList.remove('error');
+        if (errorEl) errorEl.classList.remove('visible');
         return true;
     }
+
+    // Real-time error clearing for all mobile fields
+    ['hero-mobile', 'fab-mobile', 'cs-mobile'].forEach(id => {
+        const input = document.getElementById(id);
+        if (input) {
+            input.addEventListener('input', function () {
+                if (this.classList.contains('error')) {
+                    this.classList.remove('error');
+                    const errorEl = document.getElementById(id + '-error');
+                    if (errorEl) errorEl.classList.remove('visible');
+                }
+            });
+        }
+    });
 
 });

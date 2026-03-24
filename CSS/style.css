@@ -272,10 +272,8 @@ header .container {
     min-height: 90vh;
     z-index: 2;
     display: flex;
-    align-items: flex-start;
-    /* changed from center to keep top stable */
-    padding: 120px 10% 40px;
-    /* added 100px top padding */
+    align-items: center;
+    padding: 0 10%;
 }
 
 .hero-slide-content.align-right {
@@ -441,20 +439,20 @@ input[type="number"] {
     display: inline-flex;
     align-items: center;
     gap: 16px;
-    background: rgba(255, 255, 255, 0.1);
+    /* background: rgba(255, 255, 255, 0.1); */
     /* backdrop-filter: blur(8px); */
     /* -webkit-backdrop-filter: blur(8px); */
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 12px;
-    padding: 16px 22px;
-    transition: transform 0.3s ease, background 0.3s ease;
+    /* border: 1px solid rgba(255, 255, 255, 0.15); */
+    /* border-radius: 12px; */
+    /* padding: 16px 22px; */
+    /* transition: transform 0.3s ease, background 0.3s ease; */
     width: fit-content;
 }
 
-.hero-highlight-card:hover {
+/* .hero-highlight-card:hover {
     transform: translateX(6px);
     background: rgba(255, 255, 255, 0.18);
-}
+} */
 
 .highlight-icon {
     flex-shrink: 0;
@@ -598,10 +596,10 @@ input[type="number"] {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.service-tile:hover {
+/* .service-tile:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-}
+} */
 
 .service-icon {
     width: 72px;
@@ -650,16 +648,16 @@ input[type="number"] {
     align-items: center;
 }
 
-.feature-tile:hover {
+/* .feature-tile:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-}
+} */
 
 .feature-icon {
     width: 60px;
     height: 60px;
     margin-bottom: var(--spacing-md);
-    background: linear-gradient(135deg, var(--primary-color) 0%, #FF6B35 100%);
+    background: #C00000;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -1548,11 +1546,12 @@ footer {
     /* Hero Mobile */
     .hero-slide-content {
         justify-content: center;
-        padding: 80px 20px 60px;
+        padding: 40px 20px;
         background: rgba(0, 0, 0, 0.6);
         flex-direction: column;
         text-align: center;
         align-items: center;
+        gap: 32px;
     }
 
     .hero-slide-content.align-split {
@@ -1616,7 +1615,9 @@ footer {
     }
 
     .hero-form-container {
-        display: none;
+        display: block;
+        width: 100%;
+        max-width: 400px;
     }
 
     /* Hero Highlights Mobile */
